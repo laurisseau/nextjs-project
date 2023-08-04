@@ -1,6 +1,7 @@
 import express from 'express';
 import next from 'next';
 import userRouter from './routes/users.mjs';
+import promptRouter from './routes/prompt.mjs';
 import mongoose from 'mongoose';
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -34,6 +35,7 @@ app
     server.use(express.urlencoded({ extended: true }));
 
     server.use('/api/users', userRouter);
+    server.use('/api/prompt', promptRouter);
 
     server.get('*', (req, res) => {
       return handle(req, res);

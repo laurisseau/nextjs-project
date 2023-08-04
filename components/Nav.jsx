@@ -1,10 +1,12 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { Context } from '../app/Provider';
 
 const Nav = () => {
-  const isUserLoggedIn = true;
+  const { state } = useContext(Context);
+  const { userInfo } = state;
 
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
@@ -25,7 +27,7 @@ const Nav = () => {
       {/* Desktop Nav */}
 
       <div className="sm:flex hidden">
-        {isUserLoggedIn ? (
+        {userInfo ? (
           <div className="flex gap-3 md:gap-5">
             <Link href="/create-prompt" className="black_btn">
               Create Post
@@ -54,7 +56,7 @@ const Nav = () => {
 
       {/* Mobile Nav */}
       <div className="sm:hidden flex relative">
-        {isUserLoggedIn ? (
+        {userInfo ? (
           <div className="flex">
             <Image
               src="/assets/images/logo.svg"

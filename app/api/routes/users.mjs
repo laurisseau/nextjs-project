@@ -9,7 +9,7 @@ import {
   updatedEmailVerification,
   forgotPassword,
   resetPassword,
-} from '../controller/userController.mjs';
+} from '../controller/user.mjs';
 
 const userRouter = express.Router();
 
