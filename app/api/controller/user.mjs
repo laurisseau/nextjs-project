@@ -1,3 +1,4 @@
+import Prompt from '../models/prompt.mjs';
 import {
   CognitoUserPool,
   CognitoUserAttribute,
@@ -212,4 +213,11 @@ export const resetPassword = expressAsyncHandler(async (req, res) => {
       errorController(err, req, res);
     },
   });
+});
+
+export const getUsersPosts = expressAsyncHandler(async (req, res) => {
+  const getUsersPosts = await Prompt.find({
+    userId: req.params.id,
+  });
+  res.send(getUsersPosts);
 });

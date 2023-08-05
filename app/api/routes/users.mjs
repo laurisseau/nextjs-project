@@ -9,6 +9,7 @@ import {
   updatedEmailVerification,
   forgotPassword,
   resetPassword,
+  getUsersPosts
 } from '../controller/user.mjs';
 
 const userRouter = express.Router();
@@ -28,5 +29,7 @@ userRouter.post('/forgotPassword', forgotPassword);
 userRouter.patch('/resetPassword/:token', resetPassword);
 
 userRouter.put('/profile', updateProfile); //isAuth,
+
+userRouter.get('/:id/posts', getUsersPosts);
 
 export default userRouter;
